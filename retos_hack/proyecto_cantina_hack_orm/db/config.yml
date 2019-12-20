@@ -1,0 +1,15 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+development:
+  <<: *default
+  database: db/hack_cantina_dev.db
+test:
+  <<: *default
+  database: db/hack_cantina_test.db
+
+production:
+  <<: *default
+  database: db/hack_cantina_production.db
+# de ser necesario se modifican el adaptador y la base de datos
