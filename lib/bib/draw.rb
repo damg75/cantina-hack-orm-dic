@@ -54,7 +54,7 @@ class Draw
         puts
         puts 'e: Eliminar un Cliente'
         puts
-        puts 'x: Salir'
+        puts 'x: Salir al menu anterior'
         puts
     end
 end

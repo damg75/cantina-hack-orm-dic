@@ -45,11 +45,11 @@ class Client_handler
                 puts 'Presione cualquier tecla para continuar'
                 continuator = gets.chomp
             when 'x'
-                exit_client_handler
+                Client_handler.exit_client_handler
         end
     end
 
-    def exit_client_handler
+    def self.exit_client_handler
         raise StopIteration
     end
 end
