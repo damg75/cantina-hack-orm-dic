@@ -50,9 +50,7 @@ class Draw
         puts 
         puts 'q: Lista de clientes/Busqueda de Clientes'
         puts
-        puts 'w: Crear/Actualizar un Cliente'
-        puts
-        puts 'e: Eliminar un Cliente'
+        puts 'w: Crear/Actualizar/Eliminar un Cliente'
         puts
         puts 'x: Salir al menu anterior'
         puts
