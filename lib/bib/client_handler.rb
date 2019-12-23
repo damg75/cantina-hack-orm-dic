@@ -226,9 +226,9 @@ class Client_handler
             puts
             puts 'Crear/Actualizar/Eliminar un Cliente'
             puts
-            puts 'q: Crear un cliente'
+            puts 'q: Crear un Cliente'
             puts
-            puts 'w: Actualizar/Eliminar un cliente'
+            puts 'w: Actualizar/Eliminar un Cliente'
             puts
             puts 'x: Salir al menu anterior'
             puts
@@ -247,7 +247,7 @@ class Client_handler
 
     def self.create_a_client
         system('clear')
-        puts 'n: agregar cliente'
+        puts 'Crear un cliente'
         puts 'Ingrese nombre del cliente ej: Pedro'
         client_name = gets.chomp.to_s
         puts 'Ingrese apellido del cliente ej: Perez'
@@ -279,6 +279,8 @@ class Client_handler
          }
         client = Client.new(client_hash)
         puts 'Revise el hash antes de persistir en la base de datos. y/n para persistir en la base de datos'
+        puts
+        puts 'Recibira confirmacion de la base de datos si pasa validaciones'
         puts
         client_hash.each do |key,value|
             print "#{key}: #{value} "

@@ -7,10 +7,11 @@ class Client < ActiveRecord::Base
     # validates :client_name, length: { minimum: 3, message: 'minimo  caracteres son 3' }
 
     validate :balance_validate
+    validate :person_validate
 
     def person_validate
        if client_name == 'Marco' && client_last_name == 'Polo'
-        errors[:base] << 'Esta persona esta baneada del sistema'
+            errors[:base] << 'Esta persona esta baneada del sistema'
        end
     end
 

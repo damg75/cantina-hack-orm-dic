@@ -6,14 +6,8 @@ require_relative '../models/product'
 require_relative '../models/sale'
 require_relative 'bib/draw'
 require_relative 'bib/client_handler'
+require_relative 'bib/product_handler'
 require 'colorize'
-
-
-# module Test_sql 
-#     sql = 'sentencia aquí'
-#     p ActiveRecord::Base.connection.execute(sql)
-# end
-#Sustituye solo la 'sentencia aquí' por su instrucción SQL
 
 class Main
     
@@ -37,6 +31,8 @@ class Main
                 exit_shawarma
             when 'q'
                 Client_handler.handler
+            when 'w'
+                Product_handler.handler
         end
     end
 

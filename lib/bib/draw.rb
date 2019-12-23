@@ -55,6 +55,18 @@ class Draw
         puts 'x: Salir al menu anterior'
         puts
     end
+
+    def self.product_handler_menu
+        puts 'Gestion de Productos:'
+        puts 
+        puts 'q: Lista de Productos/Busqueda de Productos'
+        puts
+        puts 'w: Crear/Actualizar/Eliminar un Producto'
+        puts
+        puts 'x: Salir al menu anterior'
+        puts
+    end
+
 end
 
 
