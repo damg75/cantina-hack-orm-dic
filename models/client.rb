@@ -6,12 +6,18 @@ class Client < ActiveRecord::Base
     # validates :client_name, presence: true
     # validates :client_name, length: { minimum: 3, message: 'minimo  caracteres son 3' }
 
-    validate :person_validate
+    validate :balance_validate
 
     def person_validate
        if client_name == 'Marco' && client_last_name == 'Polo'
         errors[:base] << 'Esta persona esta baneada del sistema'
        end
+    end
+
+    def balance_validate
+        if client_balance <= 0
+            errors[:base] << 'El cliente debe tener saldo positivo mayor a cero'
+        end
     end
 
     before_destroy do
@@ -30,6 +36,17 @@ class Client < ActiveRecord::Base
         # self.client_last_name.capitalize!
         puts
         puts 'Cliente agregado a la base de datos'
+        puts
+        self.attributes.each do |key, value|
+            print "#{key}: #{value} "
+            puts
+        end
+        puts
+    end
+
+    before_update do
+        puts
+        puts 'Cliente actualizado'
         puts
         self.attributes.each do |key, value|
             print "#{key}: #{value} "
