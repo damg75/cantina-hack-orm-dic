@@ -211,7 +211,7 @@ class Product_handler
                 when 'q'
                     Product_handler.create_a_product
                 when 'w'
-                    # Product_handler.update_a_product
+                    Product_handler.update_a_product
                 when 'x'
                     breaker = true
             end
@@ -283,9 +283,148 @@ class Product_handler
         continuator = gets.chomp
     end
 
+    def self.update_a_product
+        system('clear')
+        puts
+        puts 'Actualizar/Eliminar un Producto'
+        puts
+        products = []
+        Product.all.each do |product|
+        products << product
+        end
+        products.each do |product|
+            product.attributes.each do |key, value|
+                print "#{key}: #{value} "
+            end
+            puts
+        end
+        puts
+        begin
+            puts 'seleccione el id del Producto a Actualizar/Eliminar'
+            product_id = gets.chomp.to_i
+            product_update = Product.find(product_id)
+            puts
+            product_update.attributes.each do |key,value|
+                print "#{key}: #{value} "
+                puts  
+            end
+            loop do
+                system('clear')
+                product_update = Product.find(product_id)
+                product_update.attributes.each do |key,value|
+                    print "#{key}: #{value} "
+                    puts  
+                end
+                puts
+                puts 'Campos a actualizar:'
+                puts '1 - product_name'
+                puts '2 - product_description'
+                puts '3 - product_quantity'
+                puts '4 - selling_price'
+                puts '5 - category_id'
+                puts 'r - revisar cambios'
+                puts '+++++++++++++++++++++++'
+                puts 'd - eliminar producto'
+                puts 'x - para salir'
+        
+                selector = gets.chomp.to_s
+        
+                case selector
+                    when '1'
+                        puts 'Ingrese nuevo nombre del producto ej: Shawarma de Carne'
+                        product_name = gets.chomp.to_s
+                        product_hash = {product_name: product_name}
+                        Product.update(product_id, product_hash)
+                        puts 'Presione cualquier tecla para continuar'
+                        continuator = gets.chomp
+                    when '2'
+                        puts 'Ingrese nueva descripcion del producto ej: Shawarma que contiene Carne'
+                        product_description = gets.chomp.to_s
+                        product_hash = {product_description: product_description}
+                        Product.update(product_id, product_hash)
+                        puts 'Presione cualquier tecla para continuar'
+                        continuator = gets.chomp
+                    when '3'
+                        puts 'Ingrese nueva cantidad del producto ej: 10'
+                        product_quantity = gets.chomp.to_i
+                        product_hash = {product_quantity: product_quantity}
+                        Product.update(product_id, product_hash)
+                        puts 'Presione cualquier tecla para continuar'
+                        continuator = gets.chomp
+                    when '4'
+                        puts 'Ingrese nuevo precio de venta del producto ej: 10.6'
+                        selling_price = gets.chomp.to_s
+                        product_hash = {selling_price: selling_price}
+                        Product.update(product_id, product_hash)
+                        puts 'Presione cualquier tecla para continuar'
+                        continuator = gets.chomp
+                    when '5'
+                        puts
+                        puts 'Lista de Categorias:'
+                        puts
+                        array = []
+                        Category.all.each do |element|
+                            array << element
+                        end
+                        array.each do |element|
+                            puts
+                            element.attributes.each do |key, value|
+                                print "#{key}: #{value} "
+                            end
+                            puts
+                        end
+                        puts
+                        puts 'Escoja la id de la categoria del producto'
+                        cat_id = gets.chomp.to_i
+                        while cat_id != 1 && cat_id != 2 && cat_id != 3
+                            puts 'Ingrese id valido'
+                            cat_id = gets.chomp.to_i
+                        end
+                        category = Category.find_by(id: cat_id)
+                        product_hash = {category_id: category.id}
+                        Product.update(product_id, product_hash)
+                        puts 'Presione cualquier tecla para continuar'
+                        continuator = gets.chomp
+                    when 'r'
+                        system('clear')
+                        product_update.attributes.each do |key,value|
+                        print "#{key}: #{value} "
+                        puts  
+                        end
+                        puts 'Presione cualquier tecla para continuar'
+                        continuator = gets.chomp
+                    when 'd'
+                        puts
+                        product_update.attributes.each do |key,value|
+                        print "#{key}: #{value} "
+                        puts  
+                        end
+                        puts
+                        puts 'y/n para confirmar eliminar producto'
+                        selector = gets.chomp
+                        while selector != 'y' && selector != 'n'
+                            puts 'y/n para confirmar eliminar producto'
+                            selector = gets.chomp
+                        end
+                        if selector == 'y'
+                            product_update.destroy
+                            puts
+                            puts 'Presione cualquier tecla para continuar'
+                            continuator = gets.chomp
+                            breaker = true
+                        end
+                    when 'x'
+                        breaker = true
+                end
 
-
-
+             break if breaker == true
+            end
+        rescue => exception
+            puts 'input invalido'
+            puts 'presione cualquier tecla para continuar'
+            continuator = gets.chomp
+        end
+    end
 
 end
 
