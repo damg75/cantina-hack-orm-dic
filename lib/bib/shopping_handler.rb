@@ -105,7 +105,7 @@ class Shopping_handler
     def self.shopping_cart(client_shopper)
         time = Time.new
         invoice_hash = { invoice_date: time.strftime("%Y/%m/%d"), client_id: client_shopper.id }
-        invoice = Invoice.new(invoice_hash)
+        invoice = Invoice.create(invoice_hash)
         shopping_cart = [] #arreglo de hashes
         loop do
             system('clear')
@@ -127,6 +127,9 @@ class Shopping_handler
             puts
             if shopping_cart.size > 0
                 shopping_cart.each do |sale|
+                    producto = Product.find_by(id: sale.product_id)
+                    puts producto.product_name
+                    puts
                     sale.attributes.each do |key, value|
                         print "#{key}: #{value} "
                         puts
@@ -144,8 +147,8 @@ class Shopping_handler
             when 'y'
                 Shopping_handler.cart_shopping(client_shopper,shopping_cart,invoice)
             when 'n'
-                # selector = 'x'
-                # raise StopIteration
+                #deberia confirmar la compra o generar un recibo
+                raise StopIteration
             end
 
             
@@ -153,7 +156,6 @@ class Shopping_handler
             
             
             
-            selector = gets.chomp
             break if selector == 'x'
         end
     end
@@ -191,6 +193,7 @@ class Shopping_handler
                 puts
             end
         end
+        puts
         puts 'Escoja id de producto a agregar'
         product_id = gets.chomp.to_i
         product = Product.find_by(id: product_id)
@@ -210,7 +213,28 @@ class Shopping_handler
         end
         puts
         sale_price = sale_quantity * product.selling_price
-        puts "Total: #{sale_price}"
+        sale_hash = {product_id: product.id, sale_quantity: sale_quantity, sale_price: sale_price, invoice_id: invoice.id}
+        sale = Sale.new(sale_hash)
+        puts "Total a pagar por esta adicion al carrito: #{sale_price}"
+        puts "Total de unidades de producto a agregar al carrito: #{sale_quantity}"
+        puts 
+        puts sale.attributes.each do |key,value|
+            print "#{key}: #{value} "
+            puts
+        end
+        puts 'Para confirmar adicion al carrito y/n'
+        selector = gets.chomp.to_s
+        while selector != 'y' && selector != 'n' && selector != 'x'
+            puts  'y/n para responder'
+            selector = gets.chomp.to_s
+        end
+        case selector
+            when 'y'
+                sale.save
+                shopping_cart << sale
+            when 'n'
+                sale.destroy
+        end
 
         continuator = gets.chomp
     end
