@@ -428,4 +428,3 @@ class Product_handler
 
 end
 
-
