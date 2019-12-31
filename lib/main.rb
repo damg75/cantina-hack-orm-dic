@@ -7,6 +7,7 @@ require_relative '../models/sale'
 require_relative 'bib/draw'
 require_relative 'bib/client_handler'
 require_relative 'bib/product_handler'
+require_relative 'bib/shopping_handler'
 require 'colorize'
 
 class Main
@@ -33,6 +34,8 @@ class Main
                 Client_handler.handler
             when 'w'
                 Product_handler.handler
+            when 's'
+                Shopping_handler.handler
         end
     end
 

@@ -15,9 +15,10 @@ products_list = [
     {product_name: 'Kebab de Pollo', product_description: 'Kebab de Pollo', product_quantity: 20, selling_price: 20, category_id: kebab.id},
     {product_name: 'Kebab de Carne', product_description: 'Kebab de Carne', product_quantity: 20, selling_price: 20, category_id: kebab.id},
     {product_name: 'Kebab Mixto', product_description: 'Kebab Mixto', product_quantity: 20, selling_price: 24, category_id: kebab.id},
-    {product_name: 'Coca Cola', product_description: 'Refresco', product_quantity: 30, selling_price: 5, category_id: otros.id},
-    {product_name: 'Papas Fritas', product_description: 'Racion de papas fritas', product_quantity: 50, selling_price: 6, category_id: otros.id},
-    {product_name: 'Tabule', product_description: 'Tabule', product_quantity: 40, selling_price: 3, category_id: otros.id}
+    {product_name: 'Coca Cola', product_description: 'Refresco', product_quantity: 100, selling_price: 5, category_id: otros.id},
+    {product_name: 'Papas Fritas', product_description: 'Racion de papas fritas', product_quantity: 100, selling_price: 6, category_id: otros.id},
+    {product_name: 'Tabule', product_description: 'Tabule', product_quantity: 100, selling_price: 3, category_id: otros.id},
+    {product_name: 'Torta de Queso', product_description: 'Torta de Queso Criollo', product_quantity: 100, selling_price: 3, category_id: otros.id}
 ]
 
 
