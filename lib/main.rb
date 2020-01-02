@@ -8,6 +8,7 @@ require_relative 'bib/draw'
 require_relative 'bib/client_handler'
 require_relative 'bib/product_handler'
 require_relative 'bib/shopping_handler'
+require_relative 'bib/intelligence_handler'
 require 'colorize'
 
 class Main
@@ -36,6 +37,8 @@ class Main
                 Product_handler.handler
             when 's'
                 Shopping_handler.handler
+            when 'a'
+                Intelligence_handler.handler
         end
     end
 
@@ -44,8 +47,6 @@ class Main
         puts "Esperemos que visite pronto otra vez los shawarma... o no".colorize(:green)
         raise StopIteration
     end
-
-
 
 end
 

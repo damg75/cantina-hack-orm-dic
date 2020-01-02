@@ -78,6 +78,24 @@ class Draw
         puts
     end
 
+    def self.intelligence_handler_menu
+        puts 'Inteligencia del Negocio'
+        puts 
+        puts 'w: Productos mas vendidos'
+        puts 
+        puts 'e: Productos menos vendidos en un rango de fechas'
+        puts
+        puts 'a: Mejor cliente'
+        puts
+        puts 's: Ventas en un rango de fechas'
+        puts
+        puts 'd: Histórico de compras de un producto por cliente y el monto total'
+        puts
+        puts 'z: Consulta de saldo de un cliente'
+        puts
+        puts 'x: Salir al menu anterior'
+    end
+
 end
 
 

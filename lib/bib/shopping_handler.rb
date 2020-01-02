@@ -18,6 +18,7 @@ class Shopping_handler
     end
 
     def self.input_handler
+        puts
         selector = gets.chomp
         case selector
             when 's'
@@ -33,7 +34,7 @@ class Shopping_handler
 
     def self.shopping
         loop do
-            # begin
+            begin
                 system('clear')
                 Draw.main_menu
                 puts
@@ -92,11 +93,11 @@ class Shopping_handler
                 when 'n'
                     selector = 'x'
                 end
-                # rescue => exception
-                #     puts 'input invalido'
-                #     puts 'presione cualquier tecla para continuar'
-                #     continuator = gets.chomp
-                # end
+            rescue => exception
+                puts 'input invalido'
+                puts 'presione cualquier tecla para continuar'
+                continuator = gets.chomp
+            end
         break if selector == 'x'
         end
 

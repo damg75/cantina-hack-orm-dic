@@ -21,6 +21,7 @@ class Client_handler
     end
     
     def self.input_handler
+        puts
         selector = gets.chomp
         case selector
             when 'q'
