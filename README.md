@@ -1,9 +1,7 @@
-En la rama test
+A simple ORM-based (Active Record) CRUD Cantina ruby app
 
-1-crear-los-seeds
-2-crear un menu
-3-crear-relaciones-entre-modelos-de-entidades
-4-client-crud
-5-product-crud
-6-gestion-de-compras
-7-inteligencia-de-negocios
+git clone
+git cd cantina-hack-orm-dic
+bundle install
+
+ruby lib/main.rb
